@@ -25,7 +25,7 @@ public class Descuento {
 		return descripion;
 	}
 
-	public void setDescripion(String descripion) {
+	public void setDescripcion(String descripion) {
 		this.descripion = descripion;
 	}
 
