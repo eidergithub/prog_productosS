@@ -11,10 +11,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Nuevo producto</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="container my-3">
+	    <nav aria-label="breadcrumb">
+	      <ol class="breadcrumb">
+	        <li class="breadcrumb-item"><a href="#">Home</a></li>
+	        <li class="breadcrumb-item"><a href=VerProductos>Productos</a></li>
+	        <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
+	      </ol>
+	    </nav>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
