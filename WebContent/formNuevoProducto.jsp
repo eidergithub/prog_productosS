@@ -1,68 +1,134 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Nuevo producto</title>
-  </head>
-  <body>
-    <div class="container my-3">
-	    <nav aria-label="breadcrumb">
-	      <ol class="breadcrumb">
-	        <li class="breadcrumb-item"><a href="#">Home</a></li>
-	        <li class="breadcrumb-item"><a href=VerProductos>Productos</a></li>
-	        <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
-	      </ol>
-	    </nav>
-	    <form action="NuevoProducto" method="POST">
-	    	<div class="form-group">
-	    		<label for="id">Nombre del producto</label>
-	    		<input type="text" class="form-control" id="nombre" name="nombre">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Stock</label>
-	    		<input type="text" class="form-control" id="stock" name="stock">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Fecha de compra</label>
-	    		<input type="text" class="form-control" id="fecha_compra" name="fecha_compra" placeholder="yyyy-MM-dd">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Color</label>
-	    		<input type="text" class="form-control" id="color" name="color">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Made in</label>
-	    		<input type="text" class="form-control" id="made_in" name="made_in">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Precio</label>
-	    		<input type="text" class="form-control" id="precio" name="precio">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Descuento</label>
-	    		<input type="text" class="form-control" id="descuento" name="descuento">
-	    	</div>
-	    	<div class="form-group">
-	    		<label for="id">Tallas</label>
-	    		<input type="text" class="form-control" id="tallas" name="tallas">
-	    	</div>
-	    </form>
-	    <button type="submit" class="btn btn-primary">Submit</button>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Nuevo producto</title>
+</head>
+
+<body>
+
+  <div class="container my-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="VerProductos">Home</a></li>
+        <li class="breadcrumb-item"><a href="VerProductos">Procutos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
+      </ol>
+    </nav>
+    <div class="row">
+      <div class="col-8">
+        <form action="InsertarProducto" method="post">
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="nombre">Stock</label>
+              <input type="number" class="form-control" id="stock" name="stock">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="fechaCompra">Fecha de compra</label>
+              <input type="date" class="form-control" id="fechaCompra" name="fechaCompra">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input type="color" class="form-control" id="color" name="color">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="madeIn">Made in</label>
+              <select id="madeIn" name="madeIn" class="form-control">
+              	<option>Made in...</option>
+                <c:forEach items="${estados }" var="estado">
+                	<option value="${estado.name }">${estado.name } : ${estado.continent }</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="precio">Precio</label>
+              <!--el atributo step habilita los decimales en los inputs de tipo number-->
+              <input type="number" class="form-control" id="precio" name="precio" placeholder="1.00" step="0.01">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            Descuento
+            <c:forEach items="${descuentos }" var="descuento">
+	             <div class="form-check">
+		              <input class="form-check-input" type="radio" name="descuento" id="descuento${descuento.valor }" value="${descuento.valor }">
+		              <label class="form-check-label" for="descuento${descuento.valor }">
+		                ${descuento.descripcion }
+		              </label>
+	            </div>
+            </c:forEach>
+          
+          </div>
+
+          <div class="mb-3">
+            <div class="">Tallas</div>
+            <c:forEach items="${tallas }" var="talla">
+	            <div class="form-check form-check-inline">
+	              <input class="form-check-input" type="checkbox" name="talla" id="talla${talla.nombre }" value="${talla.nombre }">
+	              <label class="form-check-label" for="talla${talla.nombre }">
+	                ${talla.nombre }
+	              </label>
+	            </div>
+            </c:forEach>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+      <div class="col-4">
+        espacio para mostrar otra informacion
+      </div>
+
     </div>
+    <!--row-->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+
+  </div>
+  <!--container-->
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

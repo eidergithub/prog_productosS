@@ -34,7 +34,7 @@ public class NuevoProducto extends HttpServlet {
 		ModeloTalla mTalla = new ModeloTalla();
 		ModeloDescuento mDescuento = new ModeloDescuento();
 		
-		request.setAttribute("descuentos", mEstado.getAll());
+		request.setAttribute("estados", mEstado.getAll());
 		request.setAttribute("tallas", mTalla.getAll());
 		request.setAttribute("descuentos", mDescuento.getAll());
 		
