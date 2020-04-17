@@ -22,6 +22,41 @@
 	        <li class="breadcrumb-item active" aria-current="page">Nuevo</li>
 	      </ol>
 	    </nav>
+	    <form action="NuevoProducto" method="POST">
+	    	<div class="form-group">
+	    		<label for="id">Nombre del producto</label>
+	    		<input type="text" class="form-control" id="nombre" name="nombre">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Stock</label>
+	    		<input type="text" class="form-control" id="stock" name="stock">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Fecha de compra</label>
+	    		<input type="text" class="form-control" id="fecha_compra" name="fecha_compra" placeholder="yyyy-MM-dd">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Color</label>
+	    		<input type="text" class="form-control" id="color" name="color">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Made in</label>
+	    		<input type="text" class="form-control" id="made_in" name="made_in">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Precio</label>
+	    		<input type="text" class="form-control" id="precio" name="precio">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Descuento</label>
+	    		<input type="text" class="form-control" id="descuento" name="descuento">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="id">Tallas</label>
+	    		<input type="text" class="form-control" id="tallas" name="tallas">
+	    	</div>
+	    </form>
+	    <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
     <!-- Optional JavaScript -->
