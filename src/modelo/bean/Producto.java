@@ -72,7 +72,7 @@ public class Producto {
 		String cadena = "";
 		
 		if(tallas!=null) {
-			for (int i = 0; i < tallas.length; i++) {
+			for (int i = 0; i < tallas.length-1; i++) {
 				cadena = cadena + tallas[i] + ",";
 			}
 			cadena = cadena + tallas[tallas.length-1];
