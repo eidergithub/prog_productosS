@@ -12,7 +12,7 @@ import modelo.bean.Talla;
 public class ModeloProducto extends Conector {
 
 	public ArrayList<Producto> getAll(){
-		ArrayList<Producto> productos = new ArrayList();
+		ArrayList<Producto> productos = new ArrayList<Producto>();
 		PreparedStatement pst;
 		try {
 			pst = super.conexion.prepareStatement("select * from productos");
